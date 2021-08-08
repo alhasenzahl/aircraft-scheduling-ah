@@ -17,7 +17,10 @@
             When the button is clicked while in the Rotation list, it removes the flight from the rotation list and adds it back to the Flights list
             Every time a flight is added/removed from the Rotation list, the aircraft's utilization percentage in the aircraft list needs to be updated. 
         -->
-        <button class="flight-card__button">Add to Rotation</button>
+        <button class="flight-card__button" @click="$emit('addToRotation');">Add to Rotation</button>
+        <!-- 
+            The click event for this button needs to be here, but there is probably going to need to be an EMIT function also because some of the data and flights are coming from the App.vue file?? I need to look up passing the DataList data from App.vue to this file becuase I'm almost sure it can't just be a straight event.
+        -->
     </div>
 </template>
 

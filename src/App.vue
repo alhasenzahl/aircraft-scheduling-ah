@@ -7,12 +7,20 @@
                 :aircraft="aircraft"
             />
         </div>
-        <div class="card -center"></div>
+        <div class="card -center">
+            <RotationCard
+                v-for="item in this.rotationDataList" 
+                :key="item.ident"
+                :item="item"
+                @click="removeFromRotation(item)"
+            />
+        </div>
         <div class="card">
             <FlightCard
                 v-for="flight in this.flightDataList" 
                 :key="flight.ident"
                 :flight="flight"
+                @click="addToRotation(flight)"
             />
         </div>
     </div>
@@ -21,22 +29,25 @@
 <script>
 import FlightCard from './components/FlightCard.vue'
 import AircraftCard from './components/AircraftCard.vue'
+import RotationCard from './components/RotationCard.vue'
 
 export default {
     name: 'App',
     components: {
         FlightCard,
-        AircraftCard
+        AircraftCard,
+        RotationCard
     },
     data() {
         return {
             flightDataList: [],
-            aircraftDataList: []
+            aircraftDataList: [],
+            rotationDataList: []
         };
     },
     created() {
         this.getFlightData();
-        this.getAircraftData()
+        this.getAircraftData();
     },
     methods: {
         getFlightData() {
@@ -49,6 +60,20 @@ export default {
             fetch('aircrafts.json')
                 .then(response => response.json())
                 .then(data => (this.aircraftDataList = data));
+        },
+
+        addToRotation(card) {
+            if (this.flightDataList.indexOf(card.ident)) {
+                this.flightDataList.splice(this.flightDataList[card.ident], 1);
+                this.rotationDataList.push(card);
+            }
+        },
+
+        removeFromRotation(card) {
+            if (this.rotationDataList.indexOf(card.ident)) {
+                this.rotationDataList.splice(this.rotationDataList[card.ident], 1);
+                this.flightDataList.unshift(card);
+            }
         }
     }
 }
