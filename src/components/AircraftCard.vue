@@ -1,13 +1,14 @@
 <template>
     <div class="aircraft-card__container">
         <div class="aircraft-card__id">{{ aircraft.ident }}</div>
+        <div class="aircraft-card__util">{{ util }}%</div>
     </div>
 </template>
 
 <script>
 export default {
     name: 'AircraftCard',
-    props: ['aircraft']
+    props: ['aircraft', 'util']
 }
 </script>
 
@@ -33,9 +34,6 @@ export default {
 
     .aircraft-card__container {
         border: 1px solid green;
-    }
-
-    .aircraft-card__id {
         padding: 1rem 0;
     }
 </style>

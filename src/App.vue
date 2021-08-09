@@ -5,6 +5,7 @@
                 v-for="aircraft in this.aircraftDataList" 
                 :key="aircraft.ident"
                 :aircraft="aircraft"
+                :util="this.utilizationPercent"
             />
         </div>
         <div class="card -center">
@@ -42,7 +43,9 @@ export default {
         return {
             flightDataList: [],
             aircraftDataList: [],
-            rotationDataList: []
+            rotationDataList: [],
+            utilizationTime: 0,
+            utilizationPercent: 0
         };
     },
     created() {
@@ -65,11 +68,27 @@ export default {
         addCard(card) {
             this.flightDataList.splice(this.flightDataList.indexOf(card), 1);
             this.rotationDataList.push(card);
+
+            this.addSeconds(card);
         },
 
         removeCard(card) {
             this.rotationDataList.splice(this.rotationDataList.indexOf(card), 1);
             this.flightDataList.unshift(card);
+
+            this.subtractSeconds(card);
+        },
+
+        addSeconds(card) {
+            this.utilizationTime += card.arrivaltime - card.departuretime;
+
+            this.utilizationPercent = Math.round((this.utilizationTime / 86400) * 100);
+        },
+
+        subtractSeconds(card) {
+            this.utilizationTime -= (card.arrivaltime - card.departuretime);
+
+            this.utilizationPercent = Math.round((this.utilizationTime / 86400) * 100);
         }
     }
 }
@@ -82,7 +101,6 @@ export default {
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
-        margin-top: 60px;
     }
 
     .card {
