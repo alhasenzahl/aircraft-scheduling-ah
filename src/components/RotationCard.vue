@@ -11,7 +11,7 @@
                 <p class="rotation-card__arrival-time">{{ item.readable_arrival }}</p>
             </div>
         </div>
-        <button class="rotation-card__button" @click="$emit('removeFromRotation');">Remove from Rotation</button>
+        <button class="rotation-card__button" @click="$emit('removeFromRotation', item);">Remove from Rotation</button>
     </div>
 </template>
 

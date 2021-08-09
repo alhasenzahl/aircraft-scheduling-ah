@@ -12,7 +12,7 @@
                 v-for="item in this.rotationDataList" 
                 :key="item.ident"
                 :item="item"
-                @click="removeFromRotation(item)"
+                @removeFromRotation="removeCard(item)"
             />
         </div>
         <div class="card">
@@ -20,7 +20,7 @@
                 v-for="flight in this.flightDataList" 
                 :key="flight.ident"
                 :flight="flight"
-                @click="addToRotation(flight)"
+                @addToRotation="addCard(flight)"
             />
         </div>
     </div>
@@ -62,18 +62,14 @@ export default {
                 .then(data => (this.aircraftDataList = data));
         },
 
-        addToRotation(card) {
-            if (this.flightDataList.indexOf(card.ident)) {
-                this.flightDataList.splice(this.flightDataList[card.ident], 1);
-                this.rotationDataList.push(card);
-            }
+        addCard(card) {
+            this.flightDataList.splice(this.flightDataList.indexOf(card), 1);
+            this.rotationDataList.push(card);
         },
 
-        removeFromRotation(card) {
-            if (this.rotationDataList.indexOf(card.ident)) {
-                this.rotationDataList.splice(this.rotationDataList[card.ident], 1);
-                this.flightDataList.unshift(card);
-            }
+        removeCard(card) {
+            this.rotationDataList.splice(this.rotationDataList.indexOf(card), 1);
+            this.flightDataList.unshift(card);
         }
     }
 }
