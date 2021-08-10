@@ -1,28 +1,45 @@
 <template>
+    <div class="headers__wrap">
+        <div class="card__header">
+            <h2 class="card__title">Aircrafts</h2>
+        </div>
+        <div class="card__header">
+            <h2 class="card__title">Rotation</h2>
+        </div>
+        <div class="card__header">
+            <h2 class="card__title">Flights</h2>
+        </div>
+    </div>
     <div class="dashboard">
         <div class="card">
-            <AircraftCard
-                v-for="aircraft in this.aircraftDataList" 
-                :key="aircraft.ident"
-                :aircraft="aircraft"
-                :util="this.utilizationPercent"
-            />
+            <div class="card__wrap">
+                <AircraftCard
+                    v-for="aircraft in this.aircraftDataList" 
+                    :key="aircraft.ident"
+                    :aircraft="aircraft"
+                    :util="this.utilizationPercent"
+                />
+            </div>
         </div>
         <div class="card -center">
-            <RotationCard
-                v-for="item in this.rotationDataList" 
-                :key="item.ident"
-                :item="item"
-                @removeFromRotation="removeCard(item)"
-            />
+            <div class="card__wrap">
+                <RotationCard
+                    v-for="item in this.rotationDataList" 
+                    :key="item.ident"
+                    :item="item"
+                    @removeFromRotation="removeCard(item)"
+                />
+            </div>
         </div>
         <div class="card">
-            <FlightCard
-                v-for="flight in this.flightDataList" 
-                :key="flight.ident"
-                :flight="flight"
-                @addToRotation="addCard(flight)"
-            />
+            <div class="card__wrap">
+                <FlightCard
+                    v-for="flight in this.flightDataList" 
+                    :key="flight.ident"
+                    :flight="flight"
+                    @addToRotation="addCard(flight)"
+                />
+            </div>
         </div>
     </div>
 </template>
@@ -103,12 +120,40 @@ export default {
         color: #2c3e50;
     }
 
+    .headers__wrap {
+        display: flex;
+        justify-content: space-between;
+    }
+
     .card {
-        width: 33%;
-        height: 100vh;
+        width: 25%;
+        height: calc(100vh - 8rem);
         overflow: scroll;
         display: inline-block;
         vertical-align: top;
-        border: 1px solid red;
+        background: #F3D3BD;
+        margin-right: 2%;
+    }
+
+    .card:last-of-type {
+        margin-right: 0;
+    }
+
+    .card.-center {
+        width: 46%;
+    }
+
+    .card__header {
+        background: #FFF;
+        width: 25%;
+    }
+
+    .card__title {
+        margin: 0;
+        padding: 2rem 0;
+    }
+
+    .card__wrap {
+        margin-top: 1rem;
     }
 </style>

@@ -43,7 +43,9 @@ export default {
     }
 
     .flight-card__container {
-        border: 1px solid blue;
+        background: #FFF;
+        border-radius: .5rem;
+        margin: 1rem;
     }
 
     .flight-card__id {
@@ -61,10 +63,10 @@ export default {
     }
 
     .flight-card__button {
-        background: blue;
+        background: #48E5C2;
         border: none;
         border-radius: 1rem;
-        color: white;
+        color: #333;
         margin-bottom: 1rem;
         padding: .5rem 2rem;
     }

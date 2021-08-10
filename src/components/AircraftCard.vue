@@ -33,7 +33,9 @@ export default {
     }
 
     .aircraft-card__container {
-        border: 1px solid green;
+        background: #FFF;
+        border-radius: .5rem;
+        margin: 1rem;
         padding: 1rem 0;
     }
 </style>
