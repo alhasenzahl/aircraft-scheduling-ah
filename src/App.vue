@@ -1,18 +1,18 @@
 <template>
     <div class="headers__wrap">
-        <div class="card__header">
-            <h2 class="card__title">Aircrafts</h2>
+        <div class="panel__header">
+            <h2 class="panel__title">Aircrafts</h2>
         </div>
-        <div class="card__header">
-            <h2 class="card__title">Rotation</h2>
+        <div class="panel__header">
+            <h2 class="panel__title">Rotation</h2>
         </div>
-        <div class="card__header">
-            <h2 class="card__title">Flights</h2>
+        <div class="panel__header">
+            <h2 class="panel__title">Flights</h2>
         </div>
     </div>
     <div class="dashboard">
-        <div class="card">
-            <div class="card__wrap">
+        <div class="panel">
+            <div class="panel__inner">
                 <AircraftCard
                     v-for="aircraft in this.aircraftDataList" 
                     :key="aircraft.ident"
@@ -21,8 +21,8 @@
                 />
             </div>
         </div>
-        <div class="card -center">
-            <div class="card__wrap">
+        <div class="panel -center">
+            <div class="panel__inner">
                 <RotationCard
                     v-for="item in this.rotationDataList" 
                     :key="item.ident"
@@ -31,8 +31,8 @@
                 />
             </div>
         </div>
-        <div class="card">
-            <div class="card__wrap">
+        <div class="panel">
+            <div class="panel__inner">
                 <FlightCard
                     v-for="flight in this.flightDataList" 
                     :key="flight.ident"
@@ -129,7 +129,7 @@ export default {
         justify-content: space-between;
     }
 
-    .card {
+    .panel {
         border: 2px solid #5E5E5E;
         border-radius: .5rem;
         width: 24%;
@@ -141,25 +141,25 @@ export default {
         margin-right: 2%;
     }
 
-    .card:last-of-type {
+    .panel:last-of-type {
         margin-right: 0;
     }
 
-    .card.-center {
+    .panel.-center {
         width: 46%;
     }
 
-    .card__header {
+    .panel__header {
         width: 25%;
     }
 
-    .card__title {
+    .panel__title {
         color: #333;
         margin: 0;
         padding: 2rem 0;
     }
 
-    .card__wrap {
+    .panel__inner {
         margin-top: 1rem;
     }
 </style>
