@@ -112,6 +112,10 @@ export default {
 </script>
 
 <style>
+    body {
+        background: #FCFAF9; 
+    }
+
     #app {
         font-family: Avenir, Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
@@ -126,7 +130,9 @@ export default {
     }
 
     .card {
-        width: 25%;
+        border: 2px solid #5E5E5E;
+        border-radius: .5rem;
+        width: 24%;
         height: calc(100vh - 8rem);
         overflow: scroll;
         display: inline-block;
@@ -144,11 +150,11 @@ export default {
     }
 
     .card__header {
-        background: #FFF;
         width: 25%;
     }
 
     .card__title {
+        color: #333;
         margin: 0;
         padding: 2rem 0;
     }

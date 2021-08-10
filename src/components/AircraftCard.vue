@@ -33,9 +33,20 @@ export default {
     }
 
     .aircraft-card__container {
-        background: #FFF;
+        background: #FCFAF9;
+        color: #333;
         border-radius: .5rem;
         margin: 1rem;
         padding: 1rem 0;
+    }
+
+    .aircraft-card__id {
+        margin-bottom: 1rem;
+    }
+
+    .aircraft-card__util {
+        color: #48E5C2;
+        font-size: 1.5rem;
+        font-weight: bold;
     }
 </style>

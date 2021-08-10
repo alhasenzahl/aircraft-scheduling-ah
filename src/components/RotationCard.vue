@@ -43,7 +43,8 @@ export default {
     }
 
     .rotation-card__container {
-        background: #FFF;
+        background: #FCFAF9;
+        color: #333;
         border-radius: .5rem;
         margin: 1rem;
     }
